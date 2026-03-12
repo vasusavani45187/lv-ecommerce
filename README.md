@@ -1,4 +1,4 @@
-# Louis Vuitton E-Commerce Frontend
+# Louis Vuitton E-Commerce
 
 A luxury-themed e-commerce frontend built with React, Material UI, Redux Toolkit, and React Router. The project simulates a branded Louis Vuitton shopping experience with authentication, protected routes, product browsing, cart management, and mock order tracking.
 
