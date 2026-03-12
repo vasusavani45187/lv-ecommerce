@@ -1,70 +1,148 @@
-# Getting Started with Create React App
+# Louis Vuitton E-Commerce Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A luxury-themed e-commerce frontend built with React, Material UI, Redux Toolkit, and React Router. The project simulates a branded Louis Vuitton shopping experience with authentication, protected routes, product browsing, cart management, and mock order tracking.
 
-## Available Scripts
+This application is frontend-only. User accounts, session state, and orders are stored in `localStorage`, and product data is loaded from a local static dataset.
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+The app is designed as a portfolio-style e-commerce experience with:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- user sign up and login flows
+- protected pages for authenticated users
+- a product catalog with filtering, sorting, and search
+- Redux-powered cart state
+- mock checkout and order history
+- light/dark theme support via context
+- toast notifications and animated UI elements
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- Authentication with sign up and login forms
+- Password strength validation during registration
+- Route protection using a reusable `ProtectedRoute`
+- Product listing with:
+  - category filtering
+  - price sorting
+  - keyword search
+- Product detail page for individual items
+- Cart management with quantity updates and item removal
+- Coupon-based discount simulation
+- Mock payment flow with generated orders
+- Profile page with previous orders
+- Order details page with simulated delivery progress
+- Responsive UI built with Material UI
+- Framer Motion animations for a polished storefront feel
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tech Stack
 
-### `npm run build`
+- React 19
+- React Router DOM 7
+- Redux Toolkit
+- React Redux
+- Material UI
+- Framer Motion
+- React Toastify
+- Axios
+- Create React App
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Project Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```text
+src/
+  components/     Reusable UI and route guard components
+  context/        Theme context and theme toggling
+  data/           Static product catalog
+  pages/          Route-level pages
+  redux/          Cart slice and Redux store
+  services/       API helper placeholder
+  App.jsx         Main route configuration
+  index.js        Application bootstrap
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Main User Flow
 
-### `npm run eject`
+1. A new user signs up from `/signup`.
+2. User data is saved to `localStorage`, and the user is automatically logged in.
+3. Protected routes become available after login.
+4. Users browse products on the home page, filter and search items, and add products to the cart.
+5. Checkout is simulated from the cart page.
+6. Orders are stored in `localStorage` and shown on the profile page.
+7. Users can open an order to view its details and mock delivery progress.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Local Data Model
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This project does not use a backend or database.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- `users`: stored in `localStorage` after sign up
+- `loggedInUser`: current session state
+- `orders`: saved after mock checkout
+- product catalog: loaded from `src/data/products.js`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Getting Started
 
-## Learn More
+### Prerequisites
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Node.js 18+ recommended
+- npm
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Installation
 
-### Code Splitting
+```bash
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Run in Development
 
-### Analyzing the Bundle Size
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Open `http://localhost:3000` in the browser.
 
-### Making a Progressive Web App
+### Build for Production
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+npm run build
+```
 
-### Advanced Configuration
+### Run Tests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+npm test
+```
 
-### Deployment
+## Available Routes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- `/signup` - user registration
+- `/login` - user login
+- `/home` - product catalog
+- `/product/:id` - product details
+- `/cart` - shopping cart and checkout simulation
+- `/profile` - user profile and order history
+- `/order/:id` - order detail view
+- `/about` - about page
+- `/contact` - contact page
 
-### `npm run build` fails to minify
+## Notes and Limitations
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- This is a frontend demo project, not a production-ready commerce platform.
+- Authentication is client-side only and not secure for real-world deployment.
+- Data persistence depends entirely on browser `localStorage`.
+- Product images are loaded from external URLs.
+- Checkout and order tracking are simulated.
+- The app includes an `api.js` service placeholder, but no live backend integration is currently wired in.
+
+## Possible Improvements
+
+- Connect the app to a real authentication and product API
+- Persist cart state across reloads
+- Add wishlist and product reviews
+- Replace mock checkout with a payment gateway integration
+- Add admin product management
+- Improve automated test coverage
+- Add environment-based API configuration
+
+## License
+
+This project is for educational and portfolio use unless you define a separate license.
